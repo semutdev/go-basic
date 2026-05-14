@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Go + HTMX Super Gampang</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Belajar HTMX & Golang</h1>
+    
+    <button hx-post="/klik" hx-swap="outerHTML">
+        Belum pernah diklik
+    </button>
+</body>
+</html>

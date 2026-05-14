@@ -1,0 +1,42 @@
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+// fungsi cek server misal
+func CekServer(namaServer string, wg *sync.WaitGroup) {
+	// kasih tahu si waitgroup, karena kita wajib lapor kalo tugas selesai di akhir
+	defer wg.Done()
+
+	fmt.Printf("Mulai mengecek %s ...\n", namaServer)
+	// simulasi loading 2 detik
+	time.Sleep(2 * time.Second)
+	fmt.Printf("Selesai! %s beroperasi normal.\n", namaServer) 
+}
+
+func main() {
+	daftarServer := []string{"Singapore", "Indonesia", "USA"}
+
+	// ini agar main func tidak di tutup sebelum para goroutine selesai
+	// Ibaratnya buku absen
+	var wg sync.WaitGroup
+
+	waktuMulai := time.Now()
+	fmt.Println("=== Mulai Pengecekan====")
+
+	for _, server := range daftarServer {
+		// tambahkan 1 ke buku absesn untuk setiap goroutine yang akan jalan
+		wg.Add(1)
+
+		go CekServer(server, &wg)
+	}
+
+	wg.Wait()
+
+	waktuSelesai := time.Since(waktuMulai)
+	fmt.Println("=== Pengecekan selesai ===")
+	fmt.Printf("Total waktu dibutuhkan: %s\n", waktuSelesai)
+}
