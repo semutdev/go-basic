@@ -1,0 +1,369 @@
+@use '../abstracts/variables' as *;
+
+.dashboard {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  background: #f8fafc;
+
+  &__main {
+    min-width: 0;
+    padding: $space-6;
+  }
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: $space-6;
+  background: #fff;
+  border-right: 1px solid $color-border;
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    margin-bottom: $space-8;
+  }
+
+  &__logo {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    border-radius: $radius-md;
+    background: $color-primary;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  &__title {
+    font-size: $text-base;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    color: $color-text-muted;
+    font-size: $text-sm;
+  }
+
+  &__nav {
+    display: grid;
+    gap: $space-2;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.75rem 0.875rem;
+    border-radius: $radius-md;
+    color: $color-text-muted;
+    font-weight: 500;
+
+    &--active {
+      background: #f1f5f9;
+      color: $color-text;
+      border: 1px solid $color-border;
+    }
+  }
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-4;
+  margin-bottom: $space-6;
+
+  &__eyebrow {
+    color: $color-text-muted;
+    font-size: $text-sm;
+    margin-bottom: $space-1;
+  }
+
+  &__title {
+    font-size: $text-xl;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: $space-4;
+  margin-bottom: $space-6;
+}
+
+.stat-card,
+.panel {
+  background: #fff;
+  border: 1px solid $color-border;
+  border-radius: 14px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.stat-card {
+  &__label {
+    color: $color-text-muted;
+    font-size: $text-sm;
+    margin-bottom: $space-2;
+  }
+
+  &__value {
+    font-size: clamp(1.75rem, 1.4rem + 1vw, 2.25rem);
+    margin-bottom: $space-2;
+  }
+
+  &__meta {
+    color: $color-text-muted;
+    font-size: $text-sm;
+  }
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: $space-4;
+}
+
+.panel {
+  &--full {
+    grid-column: 1 / -1;
+  }
+
+  &__header {
+    margin-bottom: $space-5;
+  }
+
+  &__title {
+    font-size: $text-lg;
+    margin-bottom: $space-1;
+  }
+
+  &__subtitle {
+    color: $color-text-muted;
+    font-size: $text-sm;
+  }
+}
+
+.chart-placeholder {
+  height: 260px;
+  display: flex;
+  align-items: flex-end;
+
+  &__bars {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: $space-3;
+    align-items: end;
+
+    span {
+      display: block;
+      min-height: 2rem;
+      border-radius: 999px 999px 0 0;
+      background: linear-gradient(180deg, #0f766e 0%, #99f6e4 100%);
+    }
+  }
+}
+
+.activity-list {
+  display: grid;
+  gap: $space-4;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    font-size: $text-sm;
+  }
+
+  &__dot {
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 999px;
+    background: $color-primary;
+    flex-shrink: 0;
+  }
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+
+  th,
+  td {
+    text-align: left;
+    padding: 0.875rem 0.75rem;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: $text-sm;
+  }
+
+  th {
+    color: $color-text-muted;
+    font-weight: 600;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 0.8125rem;
+  font-weight: 600;
+
+  &--success {
+    background: #dcfce7;
+    color: #166534;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard__main {
+    padding: $space-4;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+
+    &__actions {
+      width: 100%;
+      flex-wrap: wrap;
+    }
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nav-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .sidebar--mobile {
+    display: none;
+  }
+  
+  .dashboard__overlay {
+    display: none;
+  }
+  
+  .topbar__mobile {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+  
+  .topbar__menu-button {
+    display: none;
+    width: 2.75rem;
+    height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.25rem;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: #fff;
+    cursor: pointer;
+  
+    span {
+      display: block;
+      width: 1rem;
+      height: 2px;
+      background: $color-text;
+      border-radius: 999px;
+    }
+  }
+  
+  .sidebar__close {
+    display: none;
+    margin-left: auto;
+    cursor: pointer;
+    font-size: 1.25rem;
+    color: $color-text-muted;
+  }
+  
+  @media (max-width: 1024px) {
+    .topbar {
+      align-items: flex-start;
+    }
+  
+    .topbar__menu-button {
+      display: inline-flex;
+    }
+  
+    .sidebar--mobile {
+      display: block;
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: min(82vw, 320px);
+      height: 100vh;
+      z-index: 50;
+      transform: translateX(-100%);
+      transition: transform 0.25s ease;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.16);
+    }
+  
+    .sidebar__close {
+      display: inline-flex;
+    }
+  
+    .dashboard__overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.45);
+      z-index: 40;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.25s ease;
+    }
+  
+    .nav-toggle:checked ~ .sidebar--mobile {
+      transform: translateX(0);
+    }
+  
+    .nav-toggle:checked ~ .dashboard__overlay {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+    }
+  }

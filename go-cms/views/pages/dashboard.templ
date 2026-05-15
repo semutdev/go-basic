@@ -1,0 +1,167 @@
+package pages
+
+import (
+	"github.com/semutdev/go-cms/views/components"
+	"github.com/semutdev/go-cms/views/layouts"
+)
+
+templ Dashboard() {
+	@layouts.Base("Dashboard") {
+		<input type="checkbox" id="nav-toggle" class="nav-toggle"/>
+
+		<div class="dashboard">
+			<aside class="sidebar sidebar--mobile">
+				<div class="sidebar__brand">
+					<div class="sidebar__logo">S</div>
+					<div>
+						<div class="sidebar__title">Semut CMS</div>
+						<div class="sidebar__subtitle">Admin Dashboard</div>
+					</div>
+					<label for="nav-toggle" class="sidebar__close" aria-label="Close menu">✕</label>
+				</div>
+
+				<nav class="sidebar__nav">
+					<a href="#" class="sidebar__link sidebar__link--active">Dashboard</a>
+					<a href="#" class="sidebar__link">Posts</a>
+					<a href="#" class="sidebar__link">Pages</a>
+					<a href="#" class="sidebar__link">Media</a>
+					<a href="#" class="sidebar__link">Users</a>
+					<a href="#" class="sidebar__link">Settings</a>
+				</nav>
+			</aside>
+
+			<label for="nav-toggle" class="dashboard__overlay"></label>
+
+			@components.Sidebar()
+
+			<div class="dashboard__main">
+				<header class="topbar">
+					<div class="topbar__mobile">
+						<label for="nav-toggle" class="topbar__menu-button" aria-label="Open menu">
+							<span></span>
+							<span></span>
+							<span></span>
+						</label>
+
+						<div>
+							<p class="topbar__eyebrow">Overview</p>
+							<h1 class="topbar__title">Dashboard</h1>
+						</div>
+					</div>
+
+					<div class="topbar__actions">
+						<button class="button button--ghost" type="button">Search</button>
+						<button class="button button--primary" type="button">New Post</button>
+					</div>
+				</header>
+
+				<section class="stats-grid">
+					<article class="stat-card">
+						<p class="stat-card__label">Total Posts</p>
+						<h2 class="stat-card__value">128</h2>
+						<p class="stat-card__meta">+12 this month</p>
+					</article>
+
+					<article class="stat-card">
+						<p class="stat-card__label">Published</p>
+						<h2 class="stat-card__value">98</h2>
+						<p class="stat-card__meta">76% of content live</p>
+					</article>
+
+					<article class="stat-card">
+						<p class="stat-card__label">Drafts</p>
+						<h2 class="stat-card__value">21</h2>
+						<p class="stat-card__meta">Needs review</p>
+					</article>
+
+					<article class="stat-card">
+						<p class="stat-card__label">Users</p>
+						<h2 class="stat-card__value">14</h2>
+						<p class="stat-card__meta">3 active today</p>
+					</article>
+				</section>
+
+				<section class="content-grid">
+					<article class="panel">
+						<div class="panel__header">
+							<div>
+								<h3 class="panel__title">Traffic Overview</h3>
+								<p class="panel__subtitle">Last 7 days</p>
+							</div>
+						</div>
+
+						<div class="chart-placeholder">
+							<div class="chart-placeholder__bars">
+								<span style="height: 45%"></span>
+								<span style="height: 62%"></span>
+								<span style="height: 40%"></span>
+								<span style="height: 78%"></span>
+								<span style="height: 66%"></span>
+								<span style="height: 84%"></span>
+								<span style="height: 58%"></span>
+							</div>
+						</div>
+					</article>
+
+					<article class="panel">
+						<div class="panel__header">
+							<div>
+								<h3 class="panel__title">Recent Activity</h3>
+								<p class="panel__subtitle">Latest updates</p>
+							</div>
+						</div>
+
+						<ul class="activity-list">
+							<li class="activity-list__item"><span class="activity-list__dot"></span> New post published</li>
+							<li class="activity-list__item"><span class="activity-list__dot"></span> Homepage updated</li>
+							<li class="activity-list__item"><span class="activity-list__dot"></span> Admin user invited</li>
+							<li class="activity-list__item"><span class="activity-list__dot"></span> Media uploaded</li>
+						</ul>
+					</article>
+
+					<article class="panel panel--full">
+						<div class="panel__header">
+							<div>
+								<h3 class="panel__title">Recent Posts</h3>
+								<p class="panel__subtitle">Quick overview</p>
+							</div>
+						</div>
+
+						<div class="table-wrap">
+							<table class="data-table">
+								<thead>
+									<tr>
+										<th>Title</th>
+										<th>Status</th>
+										<th>Author</th>
+										<th>Updated</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Getting Started with Go CMS</td>
+										<td><span class="badge badge--success">Published</span></td>
+										<td>Jamal</td>
+										<td>2 hours ago</td>
+									</tr>
+									<tr>
+										<td>Dashboard UI Draft</td>
+										<td><span class="badge">Draft</span></td>
+										<td>Jamal</td>
+										<td>5 hours ago</td>
+									</tr>
+									<tr>
+										<td>Release Notes v1</td>
+										<td><span class="badge badge--success">Published</span></td>
+										<td>Admin</td>
+										<td>Yesterday</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</article>
+				</section>
+			</div>
+		</div>
+	}
+}

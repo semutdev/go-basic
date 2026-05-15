@@ -1,0 +1,21 @@
+@use '../abstracts/variables' as *;
+
+.site-header {
+  background: $color-surface;
+  border-bottom: 1px solid $color-border;
+  padding: $space-4 0;
+
+  &__inner {
+    width: min(100% - 2rem, 1100px);
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    font-weight: 700;
+    font-size: $text-lg;
+    color: $color-primary;
+  }
+}

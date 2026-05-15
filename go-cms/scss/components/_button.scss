@@ -1,0 +1,26 @@
+@use '../abstracts/variables' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  min-height: 2.5rem;
+  padding: 0.625rem 1rem;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-surface;
+  color: $color-text;
+  font-size: $text-sm;
+  font-weight: 600;
+
+  &--primary {
+    background: $color-primary;
+    border-color: $color-primary;
+    color: #fff;
+  }
+
+  &--ghost {
+    background: transparent;
+  }
+}
